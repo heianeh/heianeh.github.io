@@ -263,214 +263,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/insertion-sort/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Chan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/honker.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Algo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/08/insertion-sort/" itemprop="url">INSERTION SORT</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-08T00:00:00+08:00">
-                2018-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/sort-algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">sort algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/11/08/insertion-sort/" class="leancloud_visitors" data-flag-title="INSERTION SORT">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-          &nbsp; | &nbsp;
-          <span id="/2018/11/08/insertion-sort/" class="leancloud_visitors" data-flag-title="INSERTION SORT">
-                   &nbsp;Visitors
-                  </span>
-          
-          
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Basic-Idea"><a href="#Basic-Idea" class="headerlink" title="Basic Idea"></a>Basic Idea</h2><p>Insertion sort is a simple sorting algorithm. Assuming that we get one digit at a time instead of getting all numbers at first. For me, I would insert the new one to the existing sorted list once I receive it. So the basic idea of insertion sort is that <strong>insert</strong> the next elements into the sorted list one by one.</p>
-<h2 id="Pseudo-Code"><a href="#Pseudo-Code" class="headerlink" title="Pseudo Code"></a>Pseudo Code</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> SelectionSort(numbers[], n)</span><br><span class="line">    Input:  numbers: a list of unsorted numbers</span><br><span class="line">            n: the number of unsorted numbers</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i = 1 to n <span class="keyword">do</span></span><br><span class="line">        newNum &lt;- numbers[i]</span><br><span class="line">        j &lt;- i</span><br><span class="line">        <span class="keyword">while</span> j &gt;= 1 and newNum &lt; numbers[j - 1] <span class="keyword">do</span></span><br><span class="line">            numbers[j] &lt;- numbers[j - 1]</span><br><span class="line">            j &lt;- j - 1</span><br><span class="line">        numbers[j] &lt;- newNum</span><br></pre></td></tr></table></figure>
-<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>As discussed in the <a href="#Basic-Idea">Basic Idea</a>, we receive one element once, so that we need to receive n times (Actually n - 1 times, the first elements can be ignored.) (line 5).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = 1 to n <span class="keyword">do</span></span><br></pre></td></tr></table></figure></p>
-<p>For each element, we should find the proper index in the numbers list (line 6-10). Because we have to insert the new element into the front list, so all the elements which are greater than the new elements have to move back one step, line 10 works for these.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">newNum &lt;- numbers[i]</span><br><span class="line">j &lt;- i</span><br><span class="line"><span class="keyword">while</span> j &gt;= 1 and newNum &lt; numbers[j - 1] <span class="keyword">do</span></span><br><span class="line">    numbers[j] &lt;- numbers[j - 1]</span><br><span class="line">    j &lt;- j - 1</span><br></pre></td></tr></table></figure></p>
-<p>Line 11: insert the new elements into the right position.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numbers[j] &lt;- newNum</span><br></pre></td></tr></table></figure></p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Example list of numbers: </p>
-<blockquote>
-<p>[5, 9, 2, 4, 7, 1]</p>
-</blockquote>
-<p>For the first receive:</p>
-<ol>
-<li><blockquote>
-<p><em>i = 1</em><br><em>newNum = 9</em><br><em>j = 1</em><br><em>numbers[j - 1] = 5</em><br>numbers [5, 9, 2, 4, 7, 1]</p>
-</blockquote>
-</li>
-</ol>
-<p>But numbers[0] &lt; newNum, so the numbers list:</p>
-<blockquote>
-<p>[5, 9, 2, 4, 7, 1]</p>
-</blockquote>
-<ol start="2">
-<li><blockquote>
-<p><em>i = 2</em><br><em>newNum = 2</em><br><em>j = 2</em><br><em>number[j - 1] = 9</em></p>
-</blockquote>
-</li>
-</ol>
-<p>newNum &lt; number[j - 1] so that <em>j = j - 1 = 1, numbers[j] = numbers[j - 1]</em>. Then </p>
-<ol start="3">
-<li><blockquote>
-<p><em>i = 2</em><br><em>newNum = 2</em><br><em>j = 1</em><br><em>number[j - 1] = 5</em><br>numbers [5, 9, 9, 4, 7, 1]</p>
-</blockquote>
-</li>
-</ol>
-<p>newNum &lt; number[j - 1] so that <em>j = j - 1 = 0, numbers[j] = numbers[j - 1]</em>. Then</p>
-<ol start="4">
-<li><blockquote>
-<p><em>i = 2</em><br><em>newNum = 2</em><br><em>j = 0</em><br><em>number[j - 1] = out of bounds</em><br>numbers [5, 5, 9, 4, 7, 1]</p>
-</blockquote>
-</li>
-</ol>
-<p>now j is smaller than 1 so the numbers list:</p>
-<blockquote>
-<p>[2, 5, 9, 4, 7, 1]</p>
-</blockquote>
-<p>Continue to do the same process and the numbers will change as following:</p>
-<blockquote>
-<p>[2, 4, 5, 9, 7, 1]<br>[2, 4, 5, 7, 9, 1]<br>[1, 2, 4, 5, 7, 9]<br>Finished</p>
-</blockquote>
-<h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We do n receive, for each receive, we do 1 to (n - 1) comparisons to find the proper position.<br>So for the best situation (the list is already sorted as we want), the time complexity is O(n)<br>For the worest case(the list is reversed as the final result), the time complexity is O(n^2)<br>For average case, do n / 2 comparisons for each receive, so the time complexity is O(n^2)<br>Obviously, the space complexity is constant. T(1)</p>
-<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p>Before you look the following section, I strongly recommend that write your own code at first. Algorithms need to practice before you can grasp them.</p>
-<h3 id="C-C-Code"><a href="#C-C-Code" class="headerlink" title="C/C++ Code"></a>C/C++ Code</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> numbers[] = &#123;<span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">1</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> newNum = numbers[i];</span><br><span class="line">		<span class="keyword">int</span> j = i;</span><br><span class="line">		<span class="keyword">while</span> (j &gt;= <span class="number">1</span> &amp;&amp; newNum &lt; numbers[j - <span class="number">1</span>]) &#123;</span><br><span class="line">			numbers[j] = numbers[j - <span class="number">1</span>];</span><br><span class="line">			j -= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		numbers[j] = newNum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, numbers[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Java-Code"><a href="#Java-Code" class="headerlink" title="Java Code"></a>Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertionSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//Initialise the numbers array</span></span><br><span class="line">		<span class="keyword">int</span>[] numbers = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">1</span>&#125;;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> newNum = numbers[i];</span><br><span class="line">			<span class="keyword">int</span> j = i;</span><br><span class="line">			<span class="keyword">while</span> (j &gt;= <span class="number">1</span> &amp;&amp; newNum &lt; numbers[j - <span class="number">1</span>]) &#123;</span><br><span class="line">				numbers[j] = numbers[j - <span class="number">1</span>];</span><br><span class="line">				j -= <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			numbers[j] = newNum;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//print out the sorted numbers</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(numbers[i] + <span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/selection-sort/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -639,6 +431,214 @@
 <h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p>Before you look the following section, I strongly recommend that write your own code at first. Algorithms need to practice before you can grasp them.</p>
 <h3 id="C-C-Code"><a href="#C-C-Code" class="headerlink" title="C/C++ Code"></a>C/C++ Code</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//initialize the numbers array</span></span><br><span class="line">	<span class="keyword">int</span> numbers[] = &#123;<span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">1</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> minIndex = i;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; <span class="number">6</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (numbers[j] &lt; numbers[minIndex])</span><br><span class="line">				minIndex = j;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> temp = numbers[i];</span><br><span class="line">		numbers[i] = numbers[minIndex];</span><br><span class="line">		numbers[minIndex] = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//print the sorted numbers</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, numbers[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Java-Code"><a href="#Java-Code" class="headerlink" title="Java Code"></a>Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectionSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//initialize the numbers array</span></span><br><span class="line">		<span class="keyword">int</span>[] numbers = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">1</span>&#125;;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> minIndex = i;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; <span class="number">6</span>; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (numbers[j] &lt; numbers[minIndex])</span><br><span class="line">					minIndex = j;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> temp = numbers[i];</span><br><span class="line">			numbers[i] = numbers[minIndex];</span><br><span class="line">			numbers[minIndex] = temp;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//print out the sorted numbers</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(numbers[i] + <span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/insertion-sort/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/honker.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Algo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/insertion-sort/" itemprop="url">INSERTION SORT</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-08T00:00:00+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/sort-algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">sort algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/08/insertion-sort/" class="leancloud_visitors" data-flag-title="INSERTION SORT">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+          &nbsp; | &nbsp;
+          <span id="/2018/11/08/insertion-sort/" class="leancloud_visitors" data-flag-title="INSERTION SORT">
+                   &nbsp;Visitors
+                  </span>
+          
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Basic-Idea"><a href="#Basic-Idea" class="headerlink" title="Basic Idea"></a>Basic Idea</h2><p>Insertion sort is a simple sorting algorithm. Assuming that we get one digit at a time instead of getting all numbers at first. For me, I would insert the new one to the existing sorted list once I receive it. So the basic idea of insertion sort is that <strong>insert</strong> the next elements into the sorted list one by one.</p>
+<h2 id="Pseudo-Code"><a href="#Pseudo-Code" class="headerlink" title="Pseudo Code"></a>Pseudo Code</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> SelectionSort(numbers[], n)</span><br><span class="line">    Input:  numbers: a list of unsorted numbers</span><br><span class="line">            n: the number of unsorted numbers</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i = 1 to n <span class="keyword">do</span></span><br><span class="line">        newNum &lt;- numbers[i]</span><br><span class="line">        j &lt;- i</span><br><span class="line">        <span class="keyword">while</span> j &gt;= 1 and newNum &lt; numbers[j - 1] <span class="keyword">do</span></span><br><span class="line">            numbers[j] &lt;- numbers[j - 1]</span><br><span class="line">            j &lt;- j - 1</span><br><span class="line">        numbers[j] &lt;- newNum</span><br></pre></td></tr></table></figure>
+<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>As discussed in the <a href="#Basic-Idea">Basic Idea</a>, we receive one element once, so that we need to receive n times (Actually n - 1 times, the first elements can be ignored.) (line 5).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = 1 to n <span class="keyword">do</span></span><br></pre></td></tr></table></figure></p>
+<p>For each element, we should find the proper index in the numbers list (line 6-10). Because we have to insert the new element into the front list, so all the elements which are greater than the new elements have to move back one step, line 10 works for these.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">newNum &lt;- numbers[i]</span><br><span class="line">j &lt;- i</span><br><span class="line"><span class="keyword">while</span> j &gt;= 1 and newNum &lt; numbers[j - 1] <span class="keyword">do</span></span><br><span class="line">    numbers[j] &lt;- numbers[j - 1]</span><br><span class="line">    j &lt;- j - 1</span><br></pre></td></tr></table></figure></p>
+<p>Line 11: insert the new elements into the right position.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numbers[j] &lt;- newNum</span><br></pre></td></tr></table></figure></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Example list of numbers: </p>
+<blockquote>
+<p>[5, 9, 2, 4, 7, 1]</p>
+</blockquote>
+<p>For the first receive:</p>
+<ol>
+<li><blockquote>
+<p><em>i = 1</em><br><em>newNum = 9</em><br><em>j = 1</em><br><em>numbers[j - 1] = 5</em><br>numbers [5, 9, 2, 4, 7, 1]</p>
+</blockquote>
+</li>
+</ol>
+<p>But numbers[0] &lt; newNum, so the numbers list:</p>
+<blockquote>
+<p>[5, 9, 2, 4, 7, 1]</p>
+</blockquote>
+<ol start="2">
+<li><blockquote>
+<p><em>i = 2</em><br><em>newNum = 2</em><br><em>j = 2</em><br><em>number[j - 1] = 9</em></p>
+</blockquote>
+</li>
+</ol>
+<p>newNum &lt; number[j - 1] so that <em>j = j - 1 = 1, numbers[j] = numbers[j - 1]</em>. Then </p>
+<ol start="3">
+<li><blockquote>
+<p><em>i = 2</em><br><em>newNum = 2</em><br><em>j = 1</em><br><em>number[j - 1] = 5</em><br>numbers [5, 9, 9, 4, 7, 1]</p>
+</blockquote>
+</li>
+</ol>
+<p>newNum &lt; number[j - 1] so that <em>j = j - 1 = 0, numbers[j] = numbers[j - 1]</em>. Then</p>
+<ol start="4">
+<li><blockquote>
+<p><em>i = 2</em><br><em>newNum = 2</em><br><em>j = 0</em><br><em>number[j - 1] = out of bounds</em><br>numbers [5, 5, 9, 4, 7, 1]</p>
+</blockquote>
+</li>
+</ol>
+<p>now j is smaller than 1 so the numbers list:</p>
+<blockquote>
+<p>[2, 5, 9, 4, 7, 1]</p>
+</blockquote>
+<p>Continue to do the same process and the numbers will change as following:</p>
+<blockquote>
+<p>[2, 4, 5, 9, 7, 1]<br>[2, 4, 5, 7, 9, 1]<br>[1, 2, 4, 5, 7, 9]<br>Finished</p>
+</blockquote>
+<h2 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h2><p>We do n receive, for each receive, we do 1 to (n - 1) comparisons to find the proper position.<br>So for the best situation (the list is already sorted as we want), the time complexity is O(n)<br>For the worest case(the list is reversed as the final result), the time complexity is O(n^2)<br>For average case, do n / 2 comparisons for each receive, so the time complexity is O(n^2)<br>Obviously, the space complexity is constant. T(1)</p>
+<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p>Before you look the following section, I strongly recommend that write your own code at first. Algorithms need to practice before you can grasp them.</p>
+<h3 id="C-C-Code"><a href="#C-C-Code" class="headerlink" title="C/C++ Code"></a>C/C++ Code</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> numbers[] = &#123;<span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">1</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> newNum = numbers[i];</span><br><span class="line">		<span class="keyword">int</span> j = i;</span><br><span class="line">		<span class="keyword">while</span> (j &gt;= <span class="number">1</span> &amp;&amp; newNum &lt; numbers[j - <span class="number">1</span>]) &#123;</span><br><span class="line">			numbers[j] = numbers[j - <span class="number">1</span>];</span><br><span class="line">			j -= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		numbers[j] = newNum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, numbers[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Java-Code"><a href="#Java-Code" class="headerlink" title="Java Code"></a>Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertionSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//Initialise the numbers array</span></span><br><span class="line">		<span class="keyword">int</span>[] numbers = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">1</span>&#125;;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> newNum = numbers[i];</span><br><span class="line">			<span class="keyword">int</span> j = i;</span><br><span class="line">			<span class="keyword">while</span> (j &gt;= <span class="number">1</span> &amp;&amp; newNum &lt; numbers[j - <span class="number">1</span>]) &#123;</span><br><span class="line">				numbers[j] = numbers[j - <span class="number">1</span>];</span><br><span class="line">				j -= <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			numbers[j] = newNum;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//print out the sorted numbers</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(numbers[i] + <span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
           
         
       
