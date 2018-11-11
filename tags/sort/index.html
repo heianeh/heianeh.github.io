@@ -83,7 +83,7 @@
 <meta name="keywords" content="algorithm">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Algo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/sort/index.html">
 <meta property="og:site_name" content="Algo">
 <meta property="og:description" content="Algorithm exists not just in computer science, it&apos;s everywhere. Each algorithm in my blog has pseudo code. I strongly recommend that writer your own code according to the pseudo code instead of Ctrl+c">
 <meta property="og:locale" content="default">
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/">
+  <link rel="canonical" href="http://yoursite.com/tags/sort/">
 
 
 
 
 
-  <title>Archive | Algo</title>
+  <title>Tag: sort | Algo</title>
   
 
 
@@ -144,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -251,69 +251,15 @@
   
   
   
-  <div class="post-block archive">
+  <div class="post-block tag">
+
     <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 6 posts in total. Keep on posting.
-      </span>
+      <div class="collection-title">
+        <h1>sort<small>Tag</small>
+        </h1>
+      </div>
 
       
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/11/divide-and-conquer/" itemprop="url">
-              
-                <span itemprop="name">
-
-                <div class="post-meta">
-                  <time class="post-time" itemprop="dateCreated" datetime="2018-11-11T15:30:19+08:00" content="2018-11-11">
-                    11-11
-                  </time>
-                </div>
-                DIVIDE AND CONQUER</span>
-              
-            </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
         
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -340,16 +286,7 @@
   </article>
 
 
-
       
-
-        
-        
-        
-
-        
-        
-
         
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -376,16 +313,7 @@
   </article>
 
 
-
       
-
-        
-        
-        
-
-        
-        
-
         
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -412,16 +340,7 @@
   </article>
 
 
-
       
-
-        
-        
-        
-
-        
-        
-
         
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -448,16 +367,7 @@
   </article>
 
 
-
       
-
-        
-        
-        
-
-        
-        
-
         
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -484,17 +394,15 @@
   </article>
 
 
-
       
-
     </div>
+
   </div>
   
   
   
 
   
-
 
 
           </div>
@@ -853,7 +761,7 @@
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("DIVIDE AND CONQUER");titles.push("BUBBLE SORT");titles.push("SHELL SORT");titles.push("INSERTION SORT");titles.push("SELECTION SORT");titles.push("MEET SORT (Continue updating)");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("BUBBLE SORT");titles.push("SHELL SORT");titles.push("INSERTION SORT");titles.push("SELECTION SORT");titles.push("MEET SORT (Continue updating)");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {
