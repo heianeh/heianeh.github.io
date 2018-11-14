@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="sort,recursion,merge,divide and conquer,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. Basic IdeaMerge sort is a classical implementation using DIVIDE AND CONQUER. In two branch (most used) merge sort, the program recursively divide the list into two smaller size lists. After sorting">
+<meta name="keywords" content="sort,recursion,merge,divide and conquer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MERGE SORT">
+<meta property="og:url" content="http://yoursite.com/2018/11/14/merge-sort/index.html">
+<meta property="og:site_name" content="Algo">
+<meta property="og:description" content="1. Basic IdeaMerge sort is a classical implementation using DIVIDE AND CONQUER. In two branch (most used) merge sort, the program recursively divide the list into two smaller size lists. After sorting">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/algorithm/merge-sort.png">
+<meta property="og:updated_time" content="2018-11-14T09:34:22.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MERGE SORT">
+<meta name="twitter:description" content="1. Basic IdeaMerge sort is a classical implementation using DIVIDE AND CONQUER. In two branch (most used) merge sort, the program recursively divide the list into two smaller size lists. After sorting">
+<meta name="twitter:image" content="http://yoursite.com/images/algorithm/merge-sort.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/14/merge-sort/">
+
+
+
+
+
+  <title>MERGE SORT | Algo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Algo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">To share the most powerful knowledge - algorithms</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm">
+          <a href="/categories/algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-/images/sort/sort_icon"></i> <br>
+            
+            Algorithm
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-data-structure">
+          <a href="/categories/data-structure" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-/images/recursive/recursive_icon.png"></i> <br>
+            
+            Data Structure
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-algorithm-design">
+          <a href="/categories/algorithm-design" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-/images/dynamic programming/dynamic_icon.png"></i> <br>
+            
+            Algorithm Design
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/user/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/merge-sort/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/honker.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Algo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MERGE SORT</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-14T00:00:00+08:00">
+                2018-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Basic-Idea"><a href="#1-Basic-Idea" class="headerlink" title="1. Basic Idea"></a>1. Basic Idea</h2><p>Merge sort is a classical implementation using <a href="/2018/11/11/divide-and-conquer">DIVIDE AND CONQUER</a>. In two branch (most used) merge sort, the program recursively divide the list into two smaller size lists. After sorting two sub-list, conbine two sorted list into one large sorted list. The whole procedure has two important steps. One is divide which is pretty easy, just divide the list until the sub-list has size 1 (list with only one element is a sorted list). The other is to combine two sorted list and form a longer sorted one.<br><a id="more"></a></p>
+<h2 id="2-Merge-two-sorted-list"><a href="#2-Merge-two-sorted-list" class="headerlink" title="2. Merge two sorted list"></a>2. Merge two sorted list</h2><h3 id="2-1-Example"><a href="#2-1-Example" class="headerlink" title="2.1 Example"></a>2.1 Example</h3><p>Assuming we have two sorted list:</p>
+<blockquote>
+<p>[<strong>1</strong>, 4, 7, 8, 11]<br>[<strong>2</strong>, 3, 9, 22, 24]<br>Result list: []</p>
+</blockquote>
+<p>Assuming we retrive one elements and add to result list at once, we absolutely choose the smaller one. So we conpare the first elements of two lists:</p>
+<blockquote>
+<p>1 &lt; 2<br>[<strong>4</strong>, 7, 8, 11]<br>[<strong>2</strong>. 3, 9, 22, 24]<br>Result list: [1]</p>
+</blockquote>
+<blockquote>
+<p>2 &lt; 4<br>[<strong>4</strong>, 7, 8, 11]<br>[<strong>3</strong>, 9, 22]<br>Result list: [1, 2]</p>
+</blockquote>
+<blockquote>
+<p>3 &lt; 4<br>[<strong>4</strong>, 7, 8, 11]<br>[<strong>9</strong>, 22, 24]<br>Result list: [1, 2, 3]</p>
+</blockquote>
+<blockquote>
+<p>4 &lt; 9<br>[<strong>7</strong>, 8, 11]<br>[<strong>9</strong>, 22, 24]<br>Result list: [1, 2, 3, 4]</p>
+</blockquote>
+<blockquote>
+<p>7 &lt; 9<br>[<strong>8</strong>, 11]<br>[<strong>9</strong>, 22, 24]<br>Result list: [1, 2, 3, 4, 7]</p>
+</blockquote>
+<blockquote>
+<p>8 &lt; 9<br>[<strong>11</strong>]<br>[<strong>9</strong>, 22, 24]<br>Result list: [1, 2, 3, 4, 7, 8]</p>
+</blockquote>
+<blockquote>
+<p>9 &lt; 11<br>[<strong>11</strong>]<br>[<strong>22</strong>, 24]<br>Result list: [1, 2, 3, 4, 7, 8, 9]</p>
+</blockquote>
+<blockquote>
+<p>11 &lt; 22<br>[]<br>[<strong>22</strong>, 24]<br>Result list: [1, 2, 3, 4, 7, 8, 9, 11]</p>
+</blockquote>
+<blockquote>
+<p>Since the first list is empty, we add all remaining elements from the second list to the result list.<br>[]<br>[]<br>Result list: [1, 2, 3, 4, 7, 8, 9, 11, 22, 24]</p>
+</blockquote>
+<h3 id="2-2-Pseudo-Code"><a href="#2-2-Pseudo-Code" class="headerlink" title="2.2 Pseudo Code"></a>2.2 Pseudo Code</h3><h4 id="2-2-1-Code"><a href="#2-2-1-Code" class="headerlink" title="2.2.1 Code"></a>2.2.1 Code</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> Merge(first[], second[], p, q)</span><br><span class="line">    Input:  first[]: first sorted list</span><br><span class="line">            second[]: second sorted list</span><br><span class="line">            p: length of first list</span><br><span class="line">            q: length of second list</span><br><span class="line">    Output: A sorted list contains all elements from first and second list</span><br><span class="line"></span><br><span class="line">    i &lt;- 0</span><br><span class="line">    j &lt;- 0</span><br><span class="line">    result[] &lt;- empty array with lenght p + q</span><br><span class="line">    <span class="keyword">while</span> i &lt; p and j &lt; q <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> first[i] &lt; second[j] <span class="keyword">then</span></span><br><span class="line">            result[i + j] &lt;- first[i]</span><br><span class="line">            i &lt;- i + 1</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            result[i + j] &lt;- second[j]</span><br><span class="line">            j &lt;- j + 1</span><br><span class="line">    <span class="keyword">while</span> i &lt; p <span class="keyword">do</span></span><br><span class="line">        result[i + j] &lt;- first[i]</span><br><span class="line">        i &lt;- i + 1</span><br><span class="line">    <span class="keyword">while</span> j &lt; q <span class="keyword">do</span></span><br><span class="line">        result[i + j] &lt;- first[i]</span><br><span class="line">        i &lt;- i + 1</span><br><span class="line">    <span class="built_in">return</span> result</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-2-Analysis"><a href="#2-2-2-Analysis" class="headerlink" title="2.2.2 Analysis"></a>2.2.2 Analysis</h4><p>Line 12-18 continously choose the smaller one from the head elemens of two lists and add to result list.<br>Line 19-21 move all remaining elsments from first list to result list if the first list still has elements left at last as we dicussed about.<br>Line 22-24 move all remaining elements from second list.</p>
+<h3 id="2-3-Complexity"><a href="#2-3-Complexity" class="headerlink" title="2.3 Complexity"></a>2.3 Complexity</h3><p>We go through two list only once, so the time complexity is O(p + q)<br>We create an extra result list to store the result so the space conplexity S(n) is O(p + q)</p>
+<h3 id="2-4-Code"><a href="#2-4-Code" class="headerlink" title="2.4 Code"></a>2.4 Code</h3><p>Before you look the following section, I strongly recommend that write your own code at first. Algorithms need practice before you can grasp them.</p>
+<h4 id="2-4-1-C-C-Code"><a href="#2-4-1-C-C-Code" class="headerlink" title="2.4.1 C/C++ Code"></a>2.4.1 C/C++ Code</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">merge</span><span class="params">(<span class="keyword">int</span>* first, <span class="keyword">int</span>* second, <span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* numbers = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (p + q));</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; p &amp;&amp; j &lt; q) &#123;</span><br><span class="line">        <span class="keyword">if</span> (first[i] &lt; second[j]) &#123;</span><br><span class="line">            numbers[i + j] = first[i];</span><br><span class="line">            i += <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            numbers[i + j] = second[j];</span><br><span class="line">            j += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; p) &#123;</span><br><span class="line">        numbers[i + j] = first[i];</span><br><span class="line">        i += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; q) &#123;</span><br><span class="line">        numbers[i + j] = second[j];</span><br><span class="line">        j += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(first);</span><br><span class="line">    <span class="built_in">free</span>(second);</span><br><span class="line">    <span class="keyword">return</span> numbers;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="2-4-2-Java-Code"><a href="#2-4-2-Java-Code" class="headerlink" title="2.4.2 Java Code"></a>2.4.2 Java Code</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] merge(<span class="keyword">int</span>[] first, <span class="keyword">int</span>[] second, <span class="keyword">int</span> p, <span class="keyword">int</span> q) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] numbers = <span class="keyword">new</span> <span class="keyword">int</span>[p + q];</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; p &amp;&amp; j &lt; q) &#123;</span><br><span class="line">        <span class="keyword">if</span> (first[i] &lt; second[j]) &#123;</span><br><span class="line">            numbers[i + j] = first[i];</span><br><span class="line">            i += <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            numbers[i + j] = second[j];</span><br><span class="line">            j += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; p) &#123;</span><br><span class="line">        numbers[i + j] = first[i];</span><br><span class="line">        i += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; q) &#123;</span><br><span class="line">        numbers[i + j] = second[j];</span><br><span class="line">        j += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> numbers;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="3-Merge-Sort"><a href="#3-Merge-Sort" class="headerlink" title="3. Merge Sort"></a>3. Merge Sort</h2><h3 id="3-1-Pseudo-Code"><a href="#3-1-Pseudo-Code" class="headerlink" title="3.1 Pseudo Code"></a>3.1 Pseudo Code</h3><h4 id="3-1-1-Code"><a href="#3-1-1-Code" class="headerlink" title="3.1.1 Code"></a>3.1.1 Code</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> MergeSort(numbers[], start, end)</span><br><span class="line">    Input:  numbers[]: a list contain unsorted numbers</span><br><span class="line">            start: start index to sort</span><br><span class="line">            end: end index to sort</span><br><span class="line">    Output: A sorted list of numbers</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> end - start &lt;= 1 <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">return</span> [numbers[start]]</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        mid &lt;- (start + end) / 2</span><br><span class="line">        left &lt;- MergeSort(numbers, start, mid)</span><br><span class="line">        right &lt;- MergeSort(number, mid, end)</span><br><span class="line">        numbers &lt;- Merge(left, right, mid - start, end - mid)</span><br><span class="line">        <span class="built_in">return</span> numbers</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-2-Analysis"><a href="#3-1-2-Analysis" class="headerlink" title="3.1.2 Analysis"></a>3.1.2 Analysis</h4><p>Line 7-8 says if the sub-list only has one element, then just return an array with one element (sorted array).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> end - start &lt;= 1 <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">return</span> [numbers[start]]</span><br></pre></td></tr></table></figure></p>
+<p>Line 10-12 find the middle position and recursively do the same procedure to the left and right part.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mid &lt;- (start + end) / 2</span><br><span class="line">    left &lt;- MergeSort(numbers, start, mid)</span><br><span class="line">    right &lt;- MergeSort(number, mid, end)</span><br></pre></td></tr></table></figure></p>
+<p>Line 13 merge two sorted part(left part and right part) into a larger one.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numbers &lt;- Merge(left, right, mid - start, end - mid)</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2-Example"><a href="#3-2-Example" class="headerlink" title="3.2 Example"></a>3.2 Example</h3><p>Assuming we have an original list:</p>
+<blockquote>
+<p>[8, 4, 9, 2, 7, 21, 3, 1, 11, 24]</p>
+</blockquote>
+<p><img src="/images/algorithm/merge-sort.png" alt=""></p>
+<h3 id="3-3-Complexity"><a href="#3-3-Complexity" class="headerlink" title="3.3 Complexity"></a>3.3 Complexity</h3><p>The benefits of Divide and Conquer show in merge sort. In the divide part, we use log(n) (height of the divide tree) time to divide into single element lists. In the conquer part, for each level, we go through all elements once, so the time complexity is O(n) for each level. Then we have log(n) levels so that the total time complexity is <strong>O(n*lgn + lgn) = O(nlgn)</strong><br>The space complexity S(n) in this implementation is O(n) but in fact we can reduce it to constant space O(1) (Try it yourself).</p>
+<h3 id="3-4-Code"><a href="#3-4-Code" class="headerlink" title="3.4 Code"></a>3.4 Code</h3><p>Before you look the following section, I strongly recommend that write your own code at first. Algorithms need practice before you can grasp them.</p>
+<h4 id="3-4-1-C-C-Code"><a href="#3-4-1-C-C-Code" class="headerlink" title="3.4.1 C/C++ Code"></a>3.4.1 C/C++ Code</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span>* <span class="title">merge</span><span class="params">(<span class="keyword">int</span>* first, <span class="keyword">int</span>* second, <span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span>* <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> numbers[], <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> numbers[] = &#123;<span class="number">8</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">11</span>, <span class="number">24</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span>* results = mergeSort(numbers, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, results[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(results);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">merge</span><span class="params">(<span class="keyword">int</span>* first, <span class="keyword">int</span>* second, <span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* numbers = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (p + q));</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; p &amp;&amp; j &lt; q) &#123;</span><br><span class="line">        <span class="keyword">if</span> (first[i] &lt; second[j]) &#123;</span><br><span class="line">            numbers[i + j] = first[i];</span><br><span class="line">            i += <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            numbers[i + j] = second[j];</span><br><span class="line">            j += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; p) &#123;</span><br><span class="line">        numbers[i + j] = first[i];</span><br><span class="line">        i += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; q) &#123;</span><br><span class="line">        numbers[i + j] = second[j];</span><br><span class="line">        j += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(first);</span><br><span class="line">    <span class="built_in">free</span>(second);</span><br><span class="line">    <span class="keyword">return</span> numbers;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>* numbers, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (end - start &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> *result = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">        result[<span class="number">0</span>] = numbers[start];</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span>* left = mergeSort(numbers, start, mid);</span><br><span class="line">        <span class="keyword">int</span>* right = mergeSort(numbers, mid, end);</span><br><span class="line">        <span class="keyword">return</span> merge(left, right, mid - start, end - mid);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="3-4-2-Java-Code"><a href="#3-4-2-Java-Code" class="headerlink" title="3.4.2 Java Code"></a>3.4.2 Java Code</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> blogs_algorithm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> numbers[] = &#123;<span class="number">8</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">21</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">11</span>, <span class="number">24</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] results = mergeSort(numbers, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.print(results[i] + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] merge(<span class="keyword">int</span>[] first, <span class="keyword">int</span>[] second, <span class="keyword">int</span> p, <span class="keyword">int</span> q) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] numbers = <span class="keyword">new</span> <span class="keyword">int</span>[p + q];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; p &amp;&amp; j &lt; q) &#123;</span><br><span class="line">            <span class="keyword">if</span> (first[i] &lt; second[j]) &#123;</span><br><span class="line">                numbers[i + j] = first[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                numbers[i + j] = second[j];</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; p) &#123;</span><br><span class="line">            numbers[i + j] = first[i];</span><br><span class="line">            i += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (j &lt; q) &#123;</span><br><span class="line">            numbers[i + j] = second[j];</span><br><span class="line">            j += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> numbers;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] mergeSort(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> start, <span class="keyword">int</span> end) &#123;</span><br><span class="line">        <span class="keyword">if</span> (end - start &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span>[] result = &#123; numbers[start] &#125;;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span>[] left = mergeSort(numbers, start, mid);</span><br><span class="line">            <span class="keyword">int</span>[] right = mergeSort(numbers, mid, end);</span><br><span class="line">            <span class="keyword">return</span> merge(left, right, mid - start, end - mid);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sort/" rel="tag"># sort</a>
+          
+            <a href="/tags/recursion/" rel="tag"># recursion</a>
+          
+            <a href="/tags/merge/" rel="tag"># merge</a>
+          
+            <a href="/tags/divide-and-conquer/" rel="tag"># divide and conquer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/11/divide-and-conquer/" rel="next" title="DIVIDE AND CONQUER">
+                <i class="fa fa-chevron-left"></i> DIVIDE AND CONQUER
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDkwMi8xNzQyNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/honker.jpg" alt="Leo Chan">
+            
+              <p class="site-author-name" itemprop="name">Leo Chan</p>
+              <p class="site-description motion-element" itemprop="description">Algorithm exists not just in computer science, it's everywhere. Each algorithm in my blog has pseudo code. I strongly recommend that writer your own code according to the pseudo code instead of Ctrl+c.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Basic-Idea"><span class="nav-number">1.</span> <span class="nav-text">1. Basic Idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Merge-two-sorted-list"><span class="nav-number">2.</span> <span class="nav-text">2. Merge two sorted list</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Example"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Pseudo-Code"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Pseudo Code</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-Code"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Analysis"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 Analysis</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Complexity"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Code"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Code</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-C-C-Code"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 C/C++ Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-Java-Code"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 Java Code</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Merge-Sort"><span class="nav-number">3.</span> <span class="nav-text">3. Merge Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Pseudo-Code"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Pseudo Code</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-Code"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-Analysis"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 Analysis</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Example"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Complexity"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Code"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 Code</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-C-C-Code"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 C/C++ Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-Java-Code"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2 Java Code</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Chan</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash;  v5.1.4</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+  
+  <script>
+    (function () {
+
+      firebase.initializeApp({
+        apiKey: 'AIzaSyAX7diUjl20jJSyGgirBvfO3iUim_laECY',
+        projectId: 'hexo-counter-daaf8'
+      })
+
+      function getCount(doc, increaseCount) {
+        //increaseCount will be false when not in article page
+
+        return doc.get().then(function (d) {
+          var count
+          if (!d.exists) { //has no data, initialize count
+            if (increaseCount) {
+              doc.set({
+                count: 1
+              })
+              count = 1
+            }
+            else {
+              count = 0
+            }
+          }
+          else { //has data
+            count = d.data().count
+            if (increaseCount) {
+              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
+                doc.set({ //increase count
+                  count: count + 1
+                })
+                count++
+              }
+            }
+          }
+          if (window.localStorage && increaseCount) { //mark as visited
+            localStorage.setItem(title, true)
+          }
+
+          return count
+        })
+      }
+
+      function appendCountTo(el) {
+        return function (count) {
+          $(el).append(
+            $('<span>').addClass('post-visitors-count').append(
+              $('<span>').addClass('post-meta-divider').text('|')
+            ).append(
+              $('<span>').addClass('post-meta-item-icon').append(
+                $('<i>').addClass('fa fa-users')
+              )
+              ).append($('<span>').text('Visitors ' + count))
+          )
+        }
+      }
+
+      var db = firebase.firestore()
+      var articles = db.collection('articles')
+
+      //https://hexo.io/zh-tw/docs/variables.html
+      var isPost = 'MERGE SORT'.length > 0
+      var isArchive = '' === 'true'
+      var isCategory = ''.length > 0
+      var isTag = ''.length > 0
+
+      if (isPost) { //is article page
+        var title = 'MERGE SORT'
+        var doc = articles.doc(title)
+
+        getCount(doc, true).then(appendCountTo($('.post-meta')))
+      }
+      else if (!isArchive && !isCategory && !isTag) { //is index page
+        var titles = [] //array to titles
+
+        var postsstr = '' //if you have a better way to get titles of posts, please change it
+        eval(postsstr)
+
+        var promises = titles.map(function (title) {
+          return articles.doc(title)
+        }).map(function (doc) {
+          return getCount(doc)
+        })
+        Promise.all(promises).then(function (counts) {
+          var metas = $('.post-meta')
+          counts.forEach(function (val, idx) {
+            appendCountTo(metas[idx])(val)
+          })
+        })
+      }
+    })()
+  </script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
