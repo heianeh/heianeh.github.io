@@ -82,15 +82,17 @@
 <meta name="description" content="Basic IdeaList is the most basic and normal data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so called List. There are">
 <meta name="keywords" content="data structure,list">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Structure 1 - List">
+<meta property="og:title" content="LIST">
 <meta property="og:url" content="http://yoursite.com/2019/07/05/list/index.html">
 <meta property="og:site_name" content="Algo">
 <meta property="og:description" content="Basic IdeaList is the most basic and normal data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so called List. There are">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-05T15:54:11.251Z">
+<meta property="og:image" content="http://yoursite.com/images/data-structure/single-linked-list.png">
+<meta property="og:updated_time" content="2019-07-05T16:30:54.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Structure 1 - List">
+<meta name="twitter:title" content="LIST">
 <meta name="twitter:description" content="Basic IdeaList is the most basic and normal data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so called List. There are">
+<meta name="twitter:image" content="http://yoursite.com/images/data-structure/single-linked-list.png">
 
 
 
@@ -126,7 +128,7 @@
 
 
 
-  <title>Data Structure 1 - List | Algo</title>
+  <title>LIST | Algo</title>
   
 
 
@@ -312,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Data Structure 1 - List</h1>
+          <h1 class="post-title" itemprop="name headline">LIST</h1>
         
 
         <div class="post-meta">
@@ -386,7 +388,8 @@
       
         <h2 id="Basic-Idea"><a href="#Basic-Idea" class="headerlink" title="Basic Idea"></a>Basic Idea</h2><p>List is the most basic and normal data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so called List. There are two ways for implementing the list data structure, one is linked based implementation and the other is array based implementation. In linked based implementation, there are also two choices, single linked list and double linked list, which I will describe below in detail.</p>
 <a id="more"></a>
-<h2 id="Detailed-Idea"><a href="#Detailed-Idea" class="headerlink" title="Detailed Idea"></a>Detailed Idea</h2><p>For insertion sort, the most important factor is the number of shifts for each iteration while shell sort tries to avoid large number of shifts. Shell sort would divide the original list into several sublist.<br>Original List<br>[a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>]<br>Assuming we divide into h groups, then the elements for each group show in the following (start with index 0):</p>
+<h2 id="Detailed-Idea"><a href="#Detailed-Idea" class="headerlink" title="Detailed Idea"></a>Detailed Idea</h2><h3 id="Linked-based"><a href="#Linked-based" class="headerlink" title="Linked based"></a>Linked based</h3><h4 id="single-linked-list"><a href="#single-linked-list" class="headerlink" title="single linked list"></a>single linked list</h4><p>Using single linked based implementation can help you understand this data structure easier and deeper. At first, we introduce a new proper noun, <b>node</b>. A <b>node</b> in the single linked list contains one element and a pointer (or reference, or link) that points to the next node in this list (null if the node is already the last) as shown below.<br><img src="/images/data-structure/single-linked-list.png" alt="figure 1: a single linked list with elements 1, 3, 2"></p>
+<p>For insertion sort, the most important factor is the number of shifts for each iteration while shell sort tries to avoid large number of shifts. Shell sort would divide the original list into several sublist.<br>Original List<br>[a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>]<br>Assuming we divide into h groups, then the elements for each group show in the following (start with index 0):</p>
 <blockquote>
 <p>group 1: [a<sub>0</sub>, a<sub>0 + h</sub>, a<sub>0 + 2h</sub>, …]<br>group 2: [a<sub>1</sub>, a<sub>1 + h</sub>, a<sub>1 + 2h</sub>, …]<br>group 3: [a<sub>2</sub>, a<sub>2 + h</sub>, a<sub>2 + 2h</sub>, …]<br>…<br>group h: [a<sub>h - 1</sub>, a<sub>h - 1 + h</sub>, a<sub>h - 1 + 2h</sub>, …]</p>
 </blockquote>
@@ -616,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Idea"><span class="nav-number">1.</span> <span class="nav-text">Basic Idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Detailed-Idea"><span class="nav-number">2.</span> <span class="nav-text">Detailed Idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pseudo-Code"><span class="nav-number">3.</span> <span class="nav-text">Pseudo Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.1.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analysis"><span class="nav-number">3.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">3.3.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity"><span class="nav-number">4.</span> <span class="nav-text">Complexity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">5.</span> <span class="nav-text">Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-C-Code"><span class="nav-number">5.1.</span> <span class="nav-text">C/C++ Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Code"><span class="nav-number">5.2.</span> <span class="nav-text">Java Code</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Idea"><span class="nav-number">1.</span> <span class="nav-text">Basic Idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Detailed-Idea"><span class="nav-number">2.</span> <span class="nav-text">Detailed Idea</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linked-based"><span class="nav-number">2.1.</span> <span class="nav-text">Linked based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#single-linked-list"><span class="nav-number">2.1.1.</span> <span class="nav-text">single linked list</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pseudo-Code"><span class="nav-number">3.</span> <span class="nav-text">Pseudo Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.1.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analysis"><span class="nav-number">3.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">3.3.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity"><span class="nav-number">4.</span> <span class="nav-text">Complexity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">5.</span> <span class="nav-text">Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-C-Code"><span class="nav-number">5.1.</span> <span class="nav-text">C/C++ Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Code"><span class="nav-number">5.2.</span> <span class="nav-text">Java Code</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1228,13 +1231,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/zh-tw/docs/variables.html
-      var isPost = 'Data Structure 1 - List'.length > 0
+      var isPost = 'LIST'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
       var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = 'Data Structure 1 - List'
+        var title = 'LIST'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))
