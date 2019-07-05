@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Basic IdeaShell sort is a variation of INSERTION SORT. In INSERTION SORT, for the best situation (already sorted as we need), it costs linear time complexity. So the purpose of Shell sort is to try to">
+<meta name="description" content="Basic IdeaList is the most basic and normal data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so called List. There are">
 <meta name="keywords" content="data structure,list">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Structu;16re 1 - List">
+<meta property="og:title" content="Data Structure 1 - List">
 <meta property="og:url" content="http://yoursite.com/2019/07/05/list/index.html">
 <meta property="og:site_name" content="Algo">
-<meta property="og:description" content="Basic IdeaShell sort is a variation of INSERTION SORT. In INSERTION SORT, for the best situation (already sorted as we need), it costs linear time complexity. So the purpose of Shell sort is to try to">
+<meta property="og:description" content="Basic IdeaList is the most basic and normal data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so called List. There are">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-05T15:20:15.136Z">
+<meta property="og:updated_time" content="2019-07-05T15:54:11.251Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Structu;16re 1 - List">
-<meta name="twitter:description" content="Basic IdeaShell sort is a variation of INSERTION SORT. In INSERTION SORT, for the best situation (already sorted as we need), it costs linear time complexity. So the purpose of Shell sort is to try to">
+<meta name="twitter:title" content="Data Structure 1 - List">
+<meta name="twitter:description" content="Basic IdeaList is the most basic and normal data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so called List. There are">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Data Structu;16re 1 - List | Algo</title>
+  <title>Data Structure 1 - List | Algo</title>
   
 
 
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Data Structu;16re 1 - List</h1>
+          <h1 class="post-title" itemprop="name headline">Data Structure 1 - List</h1>
         
 
         <div class="post-meta">
@@ -384,7 +384,7 @@
       
 
       
-        <h2 id="Basic-Idea"><a href="#Basic-Idea" class="headerlink" title="Basic Idea"></a>Basic Idea</h2><p>Shell sort is a variation of <a href="/2018/11/08/insertion-sort">INSERTION SORT</a>. In INSERTION SORT, for the best situation (already sorted as we need), it costs linear time complexity. So the purpose of Shell sort is to try to sort the list which is mostly sorted.</p>
+        <h2 id="Basic-Idea"><a href="#Basic-Idea" class="headerlink" title="Basic Idea"></a>Basic Idea</h2><p>List is the most basic and normal data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so called List. There are two ways for implementing the list data structure, one is linked based implementation and the other is array based implementation. In linked based implementation, there are also two choices, single linked list and double linked list, which I will describe below in detail.</p>
 <a id="more"></a>
 <h2 id="Detailed-Idea"><a href="#Detailed-Idea" class="headerlink" title="Detailed Idea"></a>Detailed Idea</h2><p>For insertion sort, the most important factor is the number of shifts for each iteration while shell sort tries to avoid large number of shifts. Shell sort would divide the original list into several sublist.<br>Original List<br>[a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>]<br>Assuming we divide into h groups, then the elements for each group show in the following (start with index 0):</p>
 <blockquote>
@@ -1228,13 +1228,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/zh-tw/docs/variables.html
-      var isPost = 'Data Structu;16re 1 - List'.length > 0
+      var isPost = 'Data Structure 1 - List'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
       var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = 'Data Structu;16re 1 - List'
+        var title = 'Data Structure 1 - List'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))
