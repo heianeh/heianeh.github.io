@@ -88,8 +88,15 @@
 <meta property="og:description" content="Basic IdeaList is the most fundamental and common data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so-called List. The">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/data-structure/singly-linked-list.png">
+<meta property="og:image" content="http://yoursite.com/images/data-structure/find1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/data-structure/add1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/data-structure/add2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/data-structure/add3.jpg">
+<meta property="og:image" content="http://yoursite.com/images/data-structure/add4.jpg">
+<meta property="og:image" content="http://yoursite.com/images/data-structure/add5.jpg">
+<meta property="og:image" content="http://yoursite.com/images/data-structure/delete1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/data-structure/double-linked-list.jpg">
-<meta property="og:updated_time" content="2019-07-06T01:36:22.969Z">
+<meta property="og:updated_time" content="2019-07-06T02:40:38.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LIST">
 <meta name="twitter:description" content="Basic IdeaList is the most fundamental and common data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so-called List. The">
@@ -387,12 +394,51 @@
       
 
       
-        <h2 id="Basic-Idea"><a href="#Basic-Idea" class="headerlink" title="Basic Idea"></a>Basic Idea</h2><p>List is the most fundamental and common data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so-called List. There are two ways for implementing the list data structure, one is linked based implementation and the other is array-based implementation. In the linked based implementation, there are also two choices, singly linked list and double linked list, which I will describe below in detail.</p>
-<a id="more"></a>
+        <h2 id="Basic-Idea"><a href="#Basic-Idea" class="headerlink" title="Basic Idea"></a>Basic Idea</h2><p>List is the most fundamental and common data structure in computer science. It is a linear collection of elements and the structure of all the elements looks like a chain so-called List. There are two ways for implementing the list data structure, one is linked based implementation and the other is array-based implementation. In the linked based implementation, there are also two choices, singly linked list and double linked list, which I will describe below in detail. A data structure also need to define the valid operations on its data and a comparison on these three implementation is given at the end.<br><a id="more"></a></p>
 <h2 id="Detailed-Idea"><a href="#Detailed-Idea" class="headerlink" title="Detailed Idea"></a>Detailed Idea</h2><h3 id="Linked-based"><a href="#Linked-based" class="headerlink" title="Linked based"></a>Linked based</h3><h4 id="singly-linked-list"><a href="#singly-linked-list" class="headerlink" title="singly linked list"></a>singly linked list</h4><p>Using singly linked based implementation can help you understand this data structure easier and deeper. At first, we introduce a new proper noun, <b>node</b>. A <b>node</b> in the singly linked list contains one element and a pointer (or reference, or link) that points to the next node in this list (null if the node is already the last) as shown below.</p>
 <blockquote>
 <p>[a singly linked list with elements 1, 3, 2]<br><img src="/images/data-structure/singly-linked-list.png" alt="figure 1: a singly linked list with elements 1, 3, 2"></p>
 </blockquote>
+<p>For a complete list data structure, we have to define the operations that can be applied to the elements. Here I introduce the most common operations (functions) on the list.</p>
+<p>Original List: [1, 3, 2]</p>
+<blockquote>
+<p>FIND - find a node with a given value 3</p>
+</blockquote>
+<ol>
+<li>using a temporary pointer go through the whole list and find the node with the given value<br><img src="/images/data-structure/find1.jpg" alt="using temporary pointer starts from head node"></li>
+</ol>
+<blockquote>
+<p>ADD (or INSERTION) - add (insert) a new element 4 to the list between 3 and 2</p>
+</blockquote>
+<ol>
+<li><p>generate a new node with a element 4 and a pointer that points to null<br><img src="/images/data-structure/add1.jpg" alt="generate a new node"></p>
+</li>
+<li><p>let the pointer of new node point to node 2<br><img src="/images/data-structure/add2.jpg" alt="change the pointer of new node"></p>
+</li>
+<li><p>let the pointer of node 3 point to new node<br><img src="/images/data-structure/add3.jpg" alt="change the pointer of node 3"></p>
+</li>
+<li><p>the final list becomes [1, 3, 4, 2]<br><img src="/images/data-structure/add4.jpg" alt="final list"></p>
+</li>
+</ol>
+<p>Notice that the order of changing the pointer is very important, if I swap step 2 and 3, then I would lose all the nodes after node 3 (no pointer that I can use to access node 2 any more)<br><img src="/images/data-structure/add5.jpg" alt="wrong order of changing the pointer"></p>
+<blockquote>
+<p>DELETE (or REMOVE) - delete (remove) an existing node 3 from the list</p>
+</blockquote>
+<ol>
+<li><p>change the pointer of previous node 1 to node 4 directly<br><img src="/images/data-structure/delete1.jpg" alt="change pointer of node 1"></p>
+</li>
+<li><p>free the node 3 if necessary (based on which language you use)</p>
+</li>
+</ol>
+<blockquote>
+<p>MODIFY - modify a node value 4 to 3</p>
+</blockquote>
+<ol>
+<li><p>find node 4</p>
+</li>
+<li><p>change the value of node 4 to 3</p>
+</li>
+</ol>
 <h4 id="double-linked-list"><a href="#double-linked-list" class="headerlink" title="double linked list"></a>double linked list</h4><p>As shown in figure 1, the singly linked list can only search from the previous to the next node (cannot reverse) which is not convenient in some cases. A Double linked list allows the users to search for both directions (from the previous to the next and from the next to the previous). The node in a double linked list contains three fields, one element and two pointers that point to the next and the previous node respectively as shown below.</p>
 <blockquote>
 <p>[a double linked list with elements 1, 3, 2]<br><img src="/images/data-structure/double-linked-list.jpg" alt="figure 2: a double linked list with elements 1, 3, 2"></p>
